@@ -1,0 +1,46 @@
+<head>
+  <title>Multiple Proverbs</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Multiple Proverbs with Pagination and Accordion</h1>
+    <hr>
+    {{> PagedProvs}}
+  </div>
+</body>
+
+
+
+<template name="PagedProvs">
+  <div>
+    <!-- paginated 'each' loop -->
+    {{#each proverbs}}
+      {{> Accordionate}}
+    {{/each}}
+  </div>
+
+  <hr>
+    <!-- optional reset butotn -->
+  {{#if showResetButton}}
+    <div class="btn btn-danger pull-right reset">Start over?</div>
+  {{/if}}
+
+    <!-- paginator UI componenets -->
+  {{> Paginator_UI proverbs}}
+  <hr>
+
+</template>
+
+
+<template name="Accordionate">
+  <div id="provListAccordion" class="ui styled accordion">
+    <div class="title">
+      <i class="dropdown icon"></i>
+      {{prverb}}
+    </div>
+    <div class="content">
+      <p>{{description}}</p>
+    </div>
+  </div>
+</template>
