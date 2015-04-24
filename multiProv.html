@@ -4,13 +4,15 @@
 
 <body>
   <div class="container">
-    <h2>Multiple Proverbs User Test </h2>
-    <h3>Pagination, Popovers, and Accordions</h3>
+    <header><h2>Multiple Proverbs User Test </h2></header>
+    <h3>Pagination, Popovers, Accordions, etc.</h3>
     <h4>(using Bootstrap3 and Semantic UI components)</h4>
     <hr>
     {{> PagedPopovers}}
     {{> PagedAccordions}}
     {{> PagedProvs}}
+    {{> PagedDropdowns}}
+    {{> PagedShapes}}
   </div>
 </body>
 
@@ -38,8 +40,6 @@
   </div>
 </template>
 
-
-
 <template name="PagedAccordions">
   <div  class="panel-group" id="pagedAccordion">
     <h4>Bootstrap Accordion</h4>
@@ -48,7 +48,6 @@
     {{/each}}
   </div>
   <hr>
-    <!-- optional reset butotn -->
   {{#if showResetButton}}
     <div class="btn btn-danger pull-right reset">Start over?</div>
   {{/if}}       <!--btn-danger-->
@@ -72,8 +71,6 @@
     </div>
   </div>
 </template>
-
-
 
 <template name="PagedProvs">
   <div>
@@ -100,4 +97,57 @@
       <p>{{description}}</p>
     </div>
   </div>
+</template>
+
+<template name="PagedDropdowns">
+  <div>
+    <h4>Semantic UI Hover Dropdowns</h4>
+    {{#each proverbs}}
+      {{> DropMeDown}}
+    {{/each}}
+  </div>
+  <hr>
+  {{#if showResetButton}}
+    <div class="btn btn-danger pull-right reset">Start over?</div>
+  {{/if}}
+  {{> Paginator_UI proverbs}}
+  <hr>
+</template>
+
+<template name="DropMeDown">
+  <div class="ui purple inverted menu">
+    <div class="ui simple dropdown item">
+      {{prverb}}
+
+      <div class="menu">
+        <div class="item">{{description}}</div>
+      </div>
+    </div>
+  </div>
+
+</template>
+
+<template name="PagedShapes">
+  <div>
+    <h4>Semantic UI Shapes</h4>
+    {{#each proverbs}}
+      {{> ShapeMe}}
+    {{/each}}
+  </div>
+  <hr>
+  {{#if showResetButton}}
+    <div class="btn btn-danger pull-right reset">Start over?</div>
+  {{/if}}
+  {{> Paginator_UI proverbs}}
+  <hr>
+</template>
+
+<template name="ShapeMe">
+  <div id="provListShape" class="ui text shape">
+    <div class="sides">
+      <div class="active ui header side">{{prverb}}</div>
+      <div class="ui header side">{{description}}</div>
+    </div>
+  </div>
+
 </template>

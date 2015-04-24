@@ -42,8 +42,6 @@ Template.PopMeOver.rendered = function(){
   });
 
 
-
-
 Template.PagedProvs.helpers({
   proverbs: function() {
     return myPagination.find({}, {
@@ -64,3 +62,45 @@ Template.PagedProvs.events({
 Template.Accordionate.rendered = function(){
   $('#provListAccordion.ui.accordion').accordion()
   };
+
+
+  Template.PagedDropdowns.helpers({
+    proverbs: function() {
+      return myPagination.find({}, {
+        itemsPerPage: 4
+      });
+    },
+    showResetButton: function() {
+      return myPagination.find().currentPage() > 0;
+    }
+  });
+
+  Template.PagedDropdowns.events({
+    'click .reset': function() {
+      return myPagination.reset();
+    }
+  });
+
+
+Template.PagedShapes.helpers({
+    proverbs: function() {
+      return myPagination.find({}, {
+        itemsPerPage: 4
+      });
+    },
+    showResetButton: function() {
+      return myPagination.find().currentPage() > 0;
+    }
+  });
+
+Template.PagedShapes.events({
+    'click .reset': function() {
+      return myPagination.reset();
+    }
+  });
+
+Template.ShapeMe.events({
+  'click': function () {
+    $('#provListShape.shape').shape('flip down')
+  }
+});
